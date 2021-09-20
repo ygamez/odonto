@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "621983389144",
+    "project_id": "odontobb-43761",
+    "storage_bucket": "odontobb-43761.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621983389144:android:091fe729b20ae34cef4ead",
+        "android_client_info": {
+          "package_name": "com.example.odontobb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621983389144-cdiuokmchuis71a7frrjbbd23nmuargn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH72q7nk_aZcfOYZqw8OtbqisniEPUm2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621983389144-cdiuokmchuis71a7frrjbbd23nmuargn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
