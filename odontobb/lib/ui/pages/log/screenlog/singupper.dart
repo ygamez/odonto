@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:odontobb/domain/blocks/auth/auth_service.dart';
 
 class KickstarterPage extends StatefulWidget {
   const KickstarterPage({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class _KickstarterPageState extends State<KickstarterPage> with RegisterAuth {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffffffff),
+      backgroundColor: const Color(0xffffffff),
       body: 
       SafeArea(
         child: SingleChildScrollView(
@@ -23,7 +24,7 @@ class _KickstarterPageState extends State<KickstarterPage> with RegisterAuth {
                 color: Colors.green[200],
                 height: 60.0,
                 alignment: Alignment.center,
-                child: Text.rich(
+                child: const Text.rich(
                   TextSpan(
                     text: "Have an account? ",
                     children: [
@@ -38,7 +39,7 @@ class _KickstarterPageState extends State<KickstarterPage> with RegisterAuth {
                   ),
                 ),
               ),
-              Divider(height: 1.0),
+              const Divider(height: 1.0),
               Form(
                 key: formKey,
                 child: SizedBox(
@@ -112,7 +113,7 @@ class _KickstarterPageState extends State<KickstarterPage> with RegisterAuth {
                             },
                             value: rememberMe,
                             controlAffinity: ListTileControlAffinity.leading,
-                            title: Text(
+                            title: const Text(
                               "Receive our weekly newsletter and other occasional updates",
                               style: TextStyle(
                                 fontSize: 12.0,
@@ -121,7 +122,7 @@ class _KickstarterPageState extends State<KickstarterPage> with RegisterAuth {
                           ),
                         ),
                       ),
-                      SizedBox(height: 15.0),
+                      const SizedBox(height: 15.0),
                       SizedBox(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 26),
@@ -129,19 +130,20 @@ class _KickstarterPageState extends State<KickstarterPage> with RegisterAuth {
                             height: 40.0,
                             //width: 20.0,
                             minWidth: MediaQuery.of(context).size.width,
-                            color: Color(0xff449b76),
+                            color: const Color(0xff449b76),
                             //color: Colors.green[100],
                             onPressed: () {
-                              register();
+                              //register();
+                               AuthService().signOuth();
                             },
                             child: isLoading
-                                ? Container(
+                                ? const SizedBox(
                                     child: CircularProgressIndicator(
-                                      strokeWidth: 2.0,
+                                      strokeWidth: 5.0,
                                     ),
                                     width: 20.0,
                                     height: 20.0)
-                                : Text("Crear cuenta",
+                                : const Text("Crear cuenta",
                                     style: TextStyle(color: Colors.white)),
                           ),
                         ),
@@ -192,6 +194,7 @@ class _KickstarterPageState extends State<KickstarterPage> with RegisterAuth {
         isLoading = true;
       });
       if (rememberMe) {
+        // ignore: avoid_print
         print("saved");
       }
       await Future.delayed(const Duration(seconds: 1));
@@ -225,7 +228,7 @@ class InputValidator {
   }
 
   static String? email(String? t) {
-    if (t!.isEmpty || t == null) return "Email can't be empty";
+    if (t!.isEmpty) return "Email can't be empty";
     return null;
   }
 

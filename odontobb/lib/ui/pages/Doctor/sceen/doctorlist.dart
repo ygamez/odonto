@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:odontobb/domain/blocks/animation/sliderigrout.dart';
 import 'package:odontobb/UI/sceens/categoriscreen.dart';
 
-class DoctorListScreen extends StatefulWidget {
+class  DoctorListScreen extends StatefulWidget {
+  const DoctorListScreen({Key? key}) : super(key: key);
+
   @override
   _DoctorListScreenState createState() => _DoctorListScreenState();
 }
@@ -27,145 +29,142 @@ class _DoctorListScreenState extends State<DoctorListScreen>with SingleTickerPro
       data: queryData.copyWith(textScaleFactor: 1.0),
       child: SafeArea(
         child: Scaffold(
-          body: Container(
-            child: Column(
-              children: [
-                //Appbar
-                Container(
-                  height: 50,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      //back btn
-                      Positioned.directional(
-                        textDirection: Directionality.of(context),
-                        start: -4,
-                        top: 0,
-                        bottom: 0,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Image.asset(
-                              "icons/ic_back.png",
-                              scale: 30,
-                            ),
+          body: Column(
+            children: [
+              //Appbar
+              SizedBox(
+                height: 50,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    //back btn
+                    Positioned.directional(
+                      textDirection: Directionality.of(context),
+                      start: -4,
+                      top: 0,
+                      bottom: 0,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Image.asset(
+                            "icons/ic_back.png",
+                            scale: 30,
                           ),
                         ),
                       ),
-                      //title
-                      Positioned.directional(
-                        textDirection: Directionality.of(context),
-                        top: 0,
-                        bottom: 0,
-                        start: 0,
-                        end: 0,
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            "Doctor list",
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'medium',
-                                color: Theme.of(context).colorScheme.onSecondary
-                            ),
+                    ),
+                    //title
+                    Positioned.directional(
+                      textDirection: Directionality.of(context),
+                      top: 0,
+                      bottom: 0,
+                      start: 0,
+                      end: 0,
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Doctor list",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'medium',
+                              color: Theme.of(context).colorScheme.onSecondary
                           ),
                         ),
                       ),
-                      //search icon
-                      Positioned(
-                        right: 4,
-                        top: 0,
-                        bottom: 0,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(context, SlidePageRoute(page: const CategoriesScreen()));
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Image.asset(
-                              "icons/ic_search.png",
-                              scale: 22,
-                            ),
+                    ),
+                    //search icon
+                    Positioned(
+                      right: 4,
+                      top: 0,
+                      bottom: 0,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(context, SlidePageRoute(page: const CategoriesScreen()));
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Image.asset(
+                            "icons/ic_search.png",
+                            scale: 22,
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                //Space
-                SizedBox(height: 8,),
-                //TabBar
-                Container(
-                  height: 60,
-                  padding: EdgeInsets.only(left: 0),
-                  child: TabBar(
-                      controller: tb,
-                  //   labelPadding: EdgeInsets.symmetric(vertical: 2.0),
-                      isScrollable: true,
-                      tabs: [
-                        Tab(
-                          child:tabItem1(context,0,"Dentist")
-                        ),
-                        Tab(
-                            child:tabItem1(context,1,"Endocrine")
-                        ),
-                        Tab(
-                            child:tabItem1(context,2,"Dentist")
-                        ),
-                        Tab(
-                            child:tabItem1(context,3,"Orthopodist")
-                        ),
-                        Tab(
-                            child:tabItem1(context,4,"Surgeon")
-                        ),
-                        ]
-                      )
-                ),
-                //
+              ),
+              //Space
+              const SizedBox(height: 8,),
+              //TabBar
+              Container(
+                height: 60,
+                padding: const EdgeInsets.only(left: 0),
+                child: TabBar(
+                    controller: tb,
+                //   labelPadding: EdgeInsets.symmetric(vertical: 2.0),
+                    isScrollable: true,
+                    tabs: [
+                      Tab(
+                        child:tabItem1(context,0,"Dentist")
+                      ),
+                      Tab(
+                          child:tabItem1(context,1,"Endocrine")
+                      ),
+                      Tab(
+                          child:tabItem1(context,2,"Dentist")
+                      ),
+                      Tab(
+                          child:tabItem1(context,3,"Orthopodist")
+                      ),
+                      Tab(
+                          child:tabItem1(context,4,"Surgeon")
+                      ),
+                      ]
+                    )
+              ),
+              //
 
-                //
-                // Expanded(
-                //   child: TabBarView(
-                //       controller: tb,
-                //       children: [
-                //         TabScreen1(),
-                //         TabScreen1(),
-                //         TabScreen1(),
-                //         TabScreen1(),
-                //         TabScreen1(),
-                //         Endocrine(),
-                //         Dentist(),
-                //         Orthopodist(),
-                //         Surgeon(),
-                //       ]
-                //   ),
-                // ),
-              ],
-            ),
+              //
+              // Expanded(
+              //   child: TabBarView(
+              //       controller: tb,
+              //       children: [
+              //         TabScreen1(),
+              //         TabScreen1(),
+              //         TabScreen1(),
+              //         TabScreen1(),
+              //         TabScreen1(),
+              //         Endocrine(),
+              //         Dentist(),
+              //         Orthopodist(),
+              //         Surgeon(),
+              //       ]
+              //   ),
+              // ),
+            ],
           ),
         ),
       ),
     );
   }
   Container tabItem1(context,int index,String title){
+    // ignore: avoid_unnecessary_containers
     return Container(
       child: Column(
         children: [
-          Container(
-            child: Text(title,
-              style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: "medium",
-                  color:tb.index==index? Theme.of(context).colorScheme.onSecondary:
-                  Theme.of(context).colorScheme.onSecondary
-              ),),
-          ),
+          Text(title,
+            style: TextStyle(
+                fontSize: 15,
+                fontFamily: "medium",
+                color:tb.index==index? Theme.of(context).colorScheme.onSecondary:
+                Theme.of(context).colorScheme.onSecondary
+            ),),
           //Space
-          SizedBox(height: 4,),
+          const SizedBox(height: 4,),
           //
           Container(
             width: 8,

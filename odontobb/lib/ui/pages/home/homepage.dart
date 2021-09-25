@@ -1,19 +1,19 @@
 
 //import 'dart:js';
 
+// ignore: avoid_web_libraries_in_flutter, unused_import
 import 'dart:js';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:odontobb/UI/model/homelist.dart';
-import 'package:odontobb/UI/pages/themes/theme.dart';
 import 'package:odontobb/domain/blocks/animation/sliderigrout.dart';
-import 'package:odontobb/UI/modelclasses/modelscla.dart';
-//import 'package:odontobb/UI/modelclasses/modelscla.dart';
-//import 'package:odontobb/domain/blocks/animation/sliderigrout.dart';
-import 'package:odontobb/UI/pages/Doctor/sceen/doctorlist.dart';
+import 'package:odontobb/UI/model/modelscla.dart';
+import 'package:odontobb/ui/pages/Doctor/sceen/doctorlist.dart';
+import 'package:odontobb/UI/pages/log/screenlog/singupper.dart';
 
+
+// ignore: unused_element
 const _kpages = <String, IconData>{
   'All': Icons.all_inbox,
   //'parte superior': Icons.android_sharp,
@@ -48,8 +48,7 @@ _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   // late final AnimationController animationController;
   // int lengdtabc = 5;
   
-@override
-  // void initState() {
+// void initState() {
   //   super.initState();
   //   tb = TabController(length: lengdtabc, vsync: this);
   //   tb.addListener(_handleTabSelection);
@@ -95,7 +94,12 @@ Future<bool> getData() async {
             ),
           IconButton(
             icon: const Icon(Icons.person_add_alt),
-            onPressed: (){}  
+            onPressed: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const KickstarterPage()),
+                );
+            }  
             ),            
         ],
       ),  
@@ -103,39 +107,36 @@ Future<bool> getData() async {
         
         children: [
 
-          SizedBox(height: 20,),
-          
-            Container(
-              child: RichText(
-              text: new TextSpan(
-                text: "Odonto",
+          const SizedBox(height: 20,),          
+            RichText(
+            text: TextSpan(
+              text: "Odonto",
+              style: TextStyle(
+                  fontSize: 27,
+                  fontFamily: "bold",
+                  color: Colors.grey[800]
+                  //color: Theme.of(context).colorScheme.onSecondary
+              ),
+              children: const [
+                TextSpan(
+                text: "bebé",
                 style: TextStyle(
                     fontSize: 27,
                     fontFamily: "bold",
-                    color: Colors.grey[800]
                     //color: Theme.of(context).colorScheme.onSecondary
+                    color: Colors.red
                 ),
-                children: [
-                  TextSpan(
-                  text: "bebé",
-                  style: TextStyle(
-                      fontSize: 27,
-                      fontFamily: "bold",
-                      //color: Theme.of(context).colorScheme.onSecondary
-                      color: Colors.red
-                  ),
-                  ),
-                ]
-                  ),
-                        ),
-            ),
+                ),
+              ]
+                ),
+                      ),
 
-          SizedBox(height: 22,),
+          const SizedBox(height: 22,),
 
           Container(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 alignment: Alignment.centerLeft,
-                child: Text("Qué tipo de asistencia necesita?",
+                child: const Text("Qué tipo de asistencia necesita?",
                 style: TextStyle(
                   fontSize: 20,
                   fontFamily: "medium",
@@ -144,85 +145,82 @@ Future<bool> getData() async {
                 ),),
               ),
 
-          SizedBox(height: 12,),
+          const SizedBox(height: 12,),
 
           Container(
             height: 162,
-            padding: EdgeInsets.only(left: 6),
+            padding: const EdgeInsets.only(left: 6),
             child: ListView(
               // shrinkWrap: true,
               //physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
               scrollDirection: Axis.horizontal,
               children: [
-                Container(
-                      child: ListView.builder(                          
-                          itemCount: homeScreenHomitelList.length,
-                          shrinkWrap: true,
-                          physics: ClampingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context,index){                            
-                            return Container(
-                              margin: EdgeInsets.only(left: 8,right: 8,top: 27,bottom: 5),
-                              child: Card(
-                                elevation: 4,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadius.circular(15)),
-                                child: InkWell(
-                                  onTap: (){
-                                    //viene un index de la lista en la base
-                                    if(index==0){
-                                      Navigator.push(context, SlidePageRoute(page: DoctorListScreen()));
-                                    }
-                                    //Implementar
-                                  //  else if(index==1){
-                                  //     Navigator.push(context, SlidePageRoute(page: ChatWithDoctorScreen2()));
-                                  //   }else if(index==2){
-                                  //     Navigator.push(context, SlidePageRoute(page: NewsScreen()));
-                                  //   }else if(index==3){
-                                  //     Navigator.push(context, SlidePageRoute(page: ChatWithDoctorScreen1()));
-                                  //   }
-                                  },
-                                  child: Container(
-                                    height: 155,
-                                    width: 112,
-                                    child: Stack(
-                                      clipBehavior: Clip.none, fit: StackFit.expand,
-                                      children: [
-                                        Positioned.directional(
-                                          end: -20,
-                                          top: -25,
-                                          textDirection: Directionality.of(context),
-                                          child: Container(
-                                              child: Image.asset(homeScreenHomitelList[index].image,scale: 6,)),
-                                        ),
-                                        //
-                                        Positioned.directional(
-                                          start: 15,
-                                          end: 8,
-                                          top: 65,
-                                          textDirection: Directionality.of(context),
-                                          child: Container(
-                                            padding: EdgeInsets.only(bottom: 20),
-                                            alignment: Alignment.topLeft,
-                                            child: Text(homeScreenHomitelList[index].title,
-                                            maxLines: 2,
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              fontFamily: "medium",
-                                              color: Colors.grey[800]
-                                              //color: Theme.of(context).colorScheme.onSecondary
-                                            ),),
-                                          ),
-                                        )
-                                      ],
-                                    ),
+                ListView.builder(                          
+                    itemCount: homeScreenHomitelList.length,
+                    shrinkWrap: true,
+                    physics: const ClampingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context,index){                            
+                      return Container(
+                        margin: const EdgeInsets.only(left: 8,right: 8,top: 27,bottom: 5),
+                        child: Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                              BorderRadius.circular(15)),
+                          child: InkWell(
+                            onTap: (){
+                              //viene un index de la lista en la base
+                              if(index==0){
+                                Navigator.push(context, SlidePageRoute(page: const DoctorListScreen()));
+                              }
+                              //Implementar
+                            //  else if(index==1){
+                            //     Navigator.push(context, SlidePageRoute(page: ChatWithDoctorScreen2()));
+                            //   }else if(index==2){
+                            //     Navigator.push(context, SlidePageRoute(page: NewsScreen()));
+                            //   }else if(index==3){
+                            //     Navigator.push(context, SlidePageRoute(page: ChatWithDoctorScreen1()));
+                            //   }
+                            },
+                            child: SizedBox(
+                              height: 155,
+                              width: 112,
+                              child: Stack(
+                                clipBehavior: Clip.none, fit: StackFit.expand,
+                                children: [
+                                  Positioned.directional(
+                                    end: -20,
+                                    top: -25,
+                                    textDirection: Directionality.of(context),
+                                    child: Image.asset(homeScreenHomitelList[index].image,scale: 6,),
                                   ),
-                                ),
+                                  //
+                                  Positioned.directional(
+                                    start: 15,
+                                    end: 8,
+                                    top: 65,
+                                    textDirection: Directionality.of(context),
+                                    child: Container(
+                                      padding: const EdgeInsets.only(bottom: 20),
+                                      alignment: Alignment.topLeft,
+                                      child: Text(homeScreenHomitelList[index].title,
+                                      maxLines: 2,
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontFamily: "medium",
+                                        color: Colors.grey[800]
+                                        //color: Theme.of(context).colorScheme.onSecondary
+                                      ),),
+                                    ),
+                                  )
+                                ],
                               ),
-                            );
-                          }
+                            ),
                           ),
+                        ),
+                      );
+                    }
                     ),
 
               ],
@@ -404,7 +402,7 @@ class HomeListView extends StatelessWidget {
                         splashColor: Colors.grey.withOpacity(0.2),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(4.0)),
-                        onTap: () => callBack(),
+                        //onTap: () => callBack(),
                       ),
                     ),
                   ],

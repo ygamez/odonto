@@ -32,30 +32,7 @@
   <title>odontobb</title>
   <link rel="manifest" href="manifest.json">
 </head>
-<body>
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyCjtB6LOGyzUtac0GQ4zln2nkD1ZOvu4yI",
-      authDomain: "odontobb-43761.firebaseapp.com",
-      projectId: "odontobb-43761",
-      storageBucket: "odontobb-43761.appspot.com",
-      messagingSenderId: "621983389144",
-      appId: "1:621983389144:web:dcf388f403773e91ef4ead",
-      measurementId: "G-QCLCYPPK23"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
+<body>  
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
@@ -128,5 +105,31 @@
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
 
   <script src="update.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+    //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCjtB6LOGyzUtac0GQ4zln2nkD1ZOvu4yI",
+      authDomain: "odontobb-43761.firebaseapp.com",
+      projectId: "odontobb-43761",
+      storageBucket: "odontobb-43761.appspot.com",
+      messagingSenderId: "621983389144",
+      appId: "1:621983389144:web:f3a6e4d464bcfb9def4ead",
+      measurementId: "G-YSWYYT1K3F"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </body>
 </html>
